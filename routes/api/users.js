@@ -23,7 +23,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
 // @access  Public
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
-
+  console.log(req.body)
   // Check Validation
   if (!isValid) {
     return res.status(400).json(errors);
@@ -34,6 +34,7 @@ router.post('/register', (req, res) => {
       errors.email = 'Email already exists';
       return res.status(400).json(errors);
     } else {
+      // get avatar for user 
       const avatar = gravatar.url(req.body.email, {
         s: '200', // Size
         r: 'pg', // Rating
@@ -83,7 +84,7 @@ router.post('/login', (req, res) => {
       return res.status(404).json(errors);
     }
 
-    // Check Password
+    // Check Password; password in db is hashed
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
         // User Matched
