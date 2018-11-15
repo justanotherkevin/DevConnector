@@ -19,3 +19,5 @@ ___
 "passport-jwt": | "^4.0.0",
 "react-scripts": | scripts and configuration used by Create React App.
 "validator": | input string validators and sanitizers.
+
+---
