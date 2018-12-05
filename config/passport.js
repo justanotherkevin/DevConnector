@@ -1,3 +1,4 @@
+// follow passport-jwt set up here: https://github.com/themikenicholson/passport-jwt
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const mongoose = require('mongoose');
@@ -18,8 +19,8 @@ module.exports = passport => {
             return done(null, user);
           }
           return done(null, false);
-        });
-      // .catch(err => console.log(err) );
+        })
+        .catch(err => console.log(err) );
     })
   )
 }

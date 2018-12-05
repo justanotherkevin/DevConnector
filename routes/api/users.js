@@ -3,8 +3,9 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
 const passport = require('passport');
+// take out keys 
+const keys = require('../../config/keys');
 
 // Load Input Validation
 const validateRegisterInput = require('../../validation/register');
@@ -23,7 +24,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
 // @access  Public
 router.post('/register', (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
-  console.log(req.body)
+  // console.log(req.body)
   // Check Validation
   if (!isValid) {
     return res.status(400).json(errors);
@@ -98,12 +99,12 @@ router.post('/login', (req, res) => {
           (err, token) => {
             res.json({
               success: true,
-              token: "Bearer " + token
+              token: "Bearer " + token // bearer is a type of proto-call
             });
           }
         );
       } else {
-        errors.password;
+        errors.password = "Password incorrect";
         return res.status(400).json(errors);
       }
     });
