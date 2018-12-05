@@ -79,18 +79,22 @@ router.post('/login', (req, res) => {
 
   // Find user by email
   User.findOne({ email }).then(user => {
-    // Check for user
+    // if no user 
     if (!user) {
       errors.email = 'User not found';
       return res.status(404).json(errors);
     }
-
-    // Check Password; password in db is hashed
+    
+    // if user found, check Password; password in db is hashed
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        // User Matched
-        const payload = { id: user.id, name: user.name, avatar: user.avatar }; // Create JWT Payload
 
+        // Create JWT Payload
+        const payload = { 
+          id: user.id, 
+          name: user.name, 
+          avatar: user.avatar 
+        }; 
         // Sign Token
         jwt.sign(
           payload,

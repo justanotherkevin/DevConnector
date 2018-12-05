@@ -42,7 +42,7 @@ class Register extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">Create your DevConnector account</p>
-              <form onSubmit={this.onSubmit} ref="registerForm">
+              <form noValidate onSubmit={this.onSubmit} ref="registerForm">
                 <div className="form-group">
                   <input
                     className="form-control form-control-lg"
@@ -52,7 +52,9 @@ class Register extends Component {
                     value={this.state.name}
                     onChange={this.onChange}
                   />
-                  { this.state.errors.name && <div className="invalid-feedback">{this.state.errors.name}</div>}
+                  { this.state.errors.name && 
+                    <div className="invalid-feedback">{this.state.errors.name}</div>
+                  }
                 </div>
                 <div className="form-group">
                   <input type="email" className="form-control form-control-lg" placeholder="Email Address" name="email" value={this.state.email} onChange={this.onChange} />
@@ -79,7 +81,7 @@ class Register extends Component {
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  // errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
