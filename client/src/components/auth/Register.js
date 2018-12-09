@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 // import { addClass } from '../../scripts/common';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
+import TextFieldGroup from '../common/TextFieldGroup';
 
 class Register extends Component {
   constructor() {
@@ -24,7 +25,7 @@ class Register extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
-      this.setState({ error: nextProps.errors });
+      this.setState({ errors: nextProps.errors });
     }
   }
   onChange = e => {
@@ -37,6 +38,7 @@ class Register extends Component {
   };
 
   render() {
+    const { errors } = this.state;
     return (
       <div className="register">
         <div className="container">
@@ -47,71 +49,40 @@ class Register extends Component {
                 Create your DevConnector account
               </p>
               <form noValidate onSubmit={this.onSubmit} ref="registerForm">
-                <div className="form-group">
-                  <input
-                    className="form-control form-control-lg"
-                    type="text"
-                    placeholder="Name"
-                    name="name"
-                    required
-                    value={this.state.name}
-                    onChange={this.onChange}
-                  />
-                  {this.state.errors.name && (
-                    <div className="invalid-feedback">
-                      {this.state.errors.name}
-                    </div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    className="form-control form-control-lg"
-                    placeholder="Email Address"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                  />
-                  {this.state.errors.email && (
-                    <div className="invalid-feedback">
-                      {this.state.errors.email}
-                    </div>
-                  )}
-                  <small className="form-text text-muted">
-                    This site uses Gravatar so if you want a profile image, use
-                    a Gravatar email
-                  </small>
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className="form-control form-control-lg"
-                    placeholder="Password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                  />
-                  {this.state.errors.password && (
-                    <div className="invalid-feedback">
-                      {this.state.errors.password}
-                    </div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className="form-control form-control-lg"
-                    placeholder="Confirm Password"
-                    name="password2"
-                    value={this.state.password2}
-                    onChange={this.onChange}
-                  />
-                  {this.state.errors.password2 && (
-                    <div className="invalid-feedback">
-                      {this.state.errors.password2}
-                    </div>
-                  )}
-                </div>
+                <TextFieldGroup
+                  placeholder="Name"
+                  name="name"
+                  type="name"
+                  value={this.state.name}
+                  onChange={this.onChange}
+                  error={this.state.errors.name}
+                />
+                <TextFieldGroup
+                  placeholder="Email Address"
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={this.state.errors.email}
+                  info="This site uses Gravatar so if you want a profile image, use
+                    a Gravatar email"
+                />
+                <TextFieldGroup
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={this.state.errors.password}
+                />
+                <TextFieldGroup
+                  placeholder="Confirm Password"
+                  name="password2"
+                  type="password"
+                  value={this.state.password2}
+                  onChange={this.onChange}
+                  error={this.state.errors.password2}
+                />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>

@@ -13,10 +13,6 @@ export const registerUser = (userData, history) => dispatch => {
         type: GET_ERRORS,
         payload: err.response.data
       });
-      // this.setState({ errors: err.response.data });
-      // Object.keys(err.response.data).forEach( (key) => {
-      //   addClass( this.refs.registerForm[key], 'is-invalid' )
-      // })
     });
 };
 
