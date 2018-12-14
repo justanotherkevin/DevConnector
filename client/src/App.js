@@ -18,12 +18,12 @@ import CreateProfile from './components/create-profile/CreateProfile';
 import EditProfile from './components/edit-profile/EditProfile';
 import AddExperience from './components/common/add-credentials/AddExperience';
 import AddEducation from './components/common/add-credentials/AddEducation';
+import Profiles from './components/profile/Profiles';
 
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 
 import './App.css';
-import Profiles from './components/profile/Profiles';
 
 // check for user token
 if (localStorage.jwtToken) {
