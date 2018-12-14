@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import TextFieldGroup from '../common/TextFieldGroup';
-import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
+import TextFieldGroup from '../TextFieldGroup';
+import TextAreaFieldGroup from '../TextAreaFieldGroup';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addEducation } from '../../actions/profileActions';
+import { addEducation } from '../../../actions/profileActions';
 
 class AddEducation extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class AddEducation extends Component {
       current: this.state.current,
       description: this.state.description
     };
-
+    // after calling addEducation action , redirect back to dashboard
     this.props.addEducation(eduData, this.props.history);
   }
 
