@@ -44,7 +44,8 @@ class CreateProfile extends Component {
     if (nextProps.profile.profile) {
       const profile = nextProps.profile.profile;
       // convert skills array to CSV
-      profile.skills = profile.skills.join(',');
+      const trimedSkills = profile.skills.map(skill => skill.trim());
+      profile.skills = trimedSkills.join(',');
       // convert emprty profile filed into empty string
       profile.company = !isEmpty(profile.company) ? profile.company : '';
       profile.website = !isEmpty(profile.website) ? profile.website : '';
@@ -215,6 +216,7 @@ class CreateProfile extends Component {
                 />
                 <div className="mb-3">
                   <button
+                    type="button"
                     className="btn btn-light"
                     onClick={this.toggleDisplaySocial}
                   >
