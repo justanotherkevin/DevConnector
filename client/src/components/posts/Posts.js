@@ -12,7 +12,7 @@ class Posts extends Component {
   }
 
   render() {
-    const { posts, loading } = this.props.post;
+    const { posts } = this.props.post;
 
     const postsContainer =
       posts.length > 0 ? (

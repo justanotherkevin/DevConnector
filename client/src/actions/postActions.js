@@ -68,7 +68,7 @@ export const getPosts = () => dispatch => {
 export const deletePost = id => dispatch => {
   dispatch(clearErrors());
   axios
-    .post(`/api/post/${id}`)
+    .delete(`/api/posts/${id}`)
     .then(res =>
       dispatch({
         type: DELETE_POST,

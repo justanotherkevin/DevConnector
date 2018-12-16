@@ -13,9 +13,9 @@ class PostItem extends Component {
     this.props.addLike(id);
   }
 
-  onUnlikeClick(id) {
+  onUnlikeClick = id => {
     this.props.removeLike(id);
-  }
+  };
 
   findUserLike = likes => {
     // check to see if current user liked a post so to show what color
@@ -60,13 +60,15 @@ class PostItem extends Component {
                   />
                   <span className="badge badge-light">{post.likes.length}</span>
                 </button>
+
                 <button
-                  onClick={this.onUnlikeClick.bind(this, post._id)}
+                  onClick={() => this.onUnlikeClick(post._id)}
                   type="button"
                   className="btn btn-light mr-1"
                 >
                   <i className="text-secondary fas fa-thumbs-down" />
                 </button>
+
                 <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
                   Comments
                 </Link>
