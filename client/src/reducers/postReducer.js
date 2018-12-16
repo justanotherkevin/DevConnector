@@ -18,10 +18,11 @@ export default function(state = initialState, action) {
         ...state,
         posts: [action.payload, ...state.posts]
       };
-    case POST_LOADING:
+    case GET_POST:
       return {
         ...state,
-        loading: true
+        post: action.payload,
+        loading: false
       };
     case GET_POSTS:
       return {
@@ -29,11 +30,16 @@ export default function(state = initialState, action) {
         posts: action.payload,
         loading: false
       };
-    case GET_POST:
+    case DELETE_POST:
       return {
         ...state,
-        post: action.payload,
-        loading: false
+        posts: state.posts.filter(post => post.id !== action.payload)
+      };
+
+    case POST_LOADING:
+      return {
+        ...state,
+        loading: true
       };
     default:
       return state;
