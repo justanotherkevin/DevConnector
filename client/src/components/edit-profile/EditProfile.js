@@ -86,9 +86,9 @@ class CreateProfile extends Component {
     this.setState({ profileData: currentProfile });
   };
   toggleDisplaySocial = () => {
-    this.setState(prevState => ({
-      displaySocialInputs: !prevState.displaySocialInputs
-    }));
+    this.setState({
+      displaySocialInputs: !this.state.displaySocialInputs
+    });
   };
   render() {
     const currentThis = this;

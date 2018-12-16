@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import ProfileHeader from './ProfileHeader';
 import ProfileAbout from './ProfileAbout';
 import ProfileCreds from './ProfileCreds';
-// import ProfileGithub from './ProfileGithub';
+import ProfileGithub from './ProfileGithub';
 
 import Spinner from '../common/Spinner';
 import { getProfileByHandle } from '../../actions/profileActions';
@@ -46,9 +46,9 @@ class Profile extends Component {
             education={profile.education}
             experience={profile.experience}
           />
-          {/* {profile.githubusername ? (
+          {profile.githubusername && 
             <ProfileGithub username={profile.githubusername} />
-          ) : null} */}
+          }
         </div>
       );
     }
