@@ -7,7 +7,7 @@ const keys = require('../config/keys');
 
 const opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = keys.secretOrKey;
+opts.secretOrKey = keys.mongoDB.secretOrKey;
 
 module.exports = passport => {
   passport.use(
@@ -19,7 +19,7 @@ module.exports = passport => {
           }
           return done(null, false);
         })
-        .catch(err => console.log(err) );
+        .catch(err => console.log(err));
     })
-  )
-}
+  );
+};

@@ -98,12 +98,12 @@ router.post('/login', (req, res) => {
         // Sign Token
         jwt.sign(
           payload,
-          keys.secretOrKey,
+          keys.mongoDB.secretOrKey,
           { expiresIn: 3600 }, // user will be signed out after 1 hr. token need to start off as 'Bearer ' +
           (err, token) => {
             res.json({
               success: true,
-              token: "Bearer " + token // bearer is a type of proto-call
+              token: 'Bearer ' + token // bearer is a type of proto-call
             });
           }
         );

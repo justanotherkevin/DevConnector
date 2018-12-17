@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { githubkey } from '../../secretKeys';
+const keys = require('../../keys');
 
 class ProfileGithub extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clientId: [githubkey.clientId],
-      clientSecret: [githubkey.clientSecret],
+      clientId: [keys.githubClientId],
+      clientSecret: [keys.githubClientSecret],
       count: 5,
       sort: 'created: asc',
       repos: []
@@ -18,7 +18,6 @@ class ProfileGithub extends Component {
   componentDidMount() {
     const { username } = this.props;
     const { count, sort, clientId, clientSecret } = this.state;
-
     fetch(
       `https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`
     )

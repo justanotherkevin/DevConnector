@@ -14,11 +14,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //DB config
-const db = require('./config/keys').mongoURI;
+const dbURI = require('./config/keys').mongoDB.mongoURI;
 // Connect to MongoDB
 mongoose
   .connect(
-    db,
+    dbURI,
     { useNewUrlParser: true }
   )
   .then(() => console.log('mongodb connected!!'))
@@ -35,7 +35,7 @@ app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
 // server static assets if in production
-// because app contain both server and client, this dic will be hosted, and the client app need to be pointed to by the server, ( server is being run and hosted) the client app is being build by the server
+// because app contain both server and client, this dic will be hosted, and the client app need to be pointed to by the server, ( server is being run and hosted) the client app is being build by the server; "heroku-postbuild" script in the package.json
 if (process.env.NODE_ENV === 'production') {
   // set static folder
   app.use(express.static('client/build'));
