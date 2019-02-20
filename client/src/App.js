@@ -61,7 +61,7 @@ class App extends Component {
               <Route exact path="/profile/:handle" component={Profile} />
               <Route exact path="/not-found" component={NotFound} />
               <Switch>
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/dashboard" compon ent={Dashboard} />
                 <PrivateRoute
                   exact
                   path="/create-profile"

@@ -25,7 +25,6 @@ class Landing extends Component {
                   from other developers
                 </p>
                 <hr />
-                {/* <Route exact path="/register" */}
                 <Link className="btn btn-lg btn-info mr-2" to="/register">
                   Sign Up
                 </Link>
