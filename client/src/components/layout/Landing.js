@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class Landing extends Component {
@@ -25,12 +26,12 @@ class Landing extends Component {
                 </p>
                 <hr />
                 {/* <Route exact path="/register" */}
-                <a href="register.html" className="btn btn-lg btn-info mr-2">
+                <Link className="btn btn-lg btn-info mr-2" to="/register">
                   Sign Up
-                </a>
-                <a href="login.html" className="btn btn-lg btn-light">
+                </Link>
+                <Link className="btn btn-lg btn-light" to="/login">
                   Login
-                </a>
+                </Link>
               </div>
             </div>
           </div>
