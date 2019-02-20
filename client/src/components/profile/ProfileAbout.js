@@ -4,8 +4,8 @@ import isEmpty from '../../validation/is-empty';
 
 class ProfileAbout extends Component {
   render() {
+    console.log(this.props)
     const { profile } = this.props;
-
     // Get first name
     const firstName = profile.user.name.trim().split(' ')[0];
 
@@ -25,8 +25,8 @@ class ProfileAbout extends Component {
               {isEmpty(profile.bio) ? (
                 <span>{firstName} does not have a bio</span>
               ) : (
-                <span>{profile.bio}</span>
-              )}
+                  <span>{profile.bio}</span>
+                )}
             </p>
             <hr />
             <h3 className="text-center text-info">Skill Set</h3>
