@@ -12,7 +12,6 @@ import { getProfileByHandle } from '../../actions/profileActions';
 
 class Profile extends Component {
   componentDidMount() {
-    console.log('ondidmountt', this.props.profile)
     if (this.props.match.params.handle) {
       this.props.getProfileByHandle(this.props.match.params.handle);
     }
@@ -27,7 +26,6 @@ class Profile extends Component {
   render() {
     const { profile, loading } = this.props.profile;
     let profileContent;
-    console.log(profile, loading, 'loading')
     if (profile === null || loading) {
       profileContent = <Spinner />;
     } else {
