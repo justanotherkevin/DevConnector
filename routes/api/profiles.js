@@ -135,7 +135,7 @@ router.post(
     if (req.body.facebook) profileFields.social.facebook = req.body.facebook;
     if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
     if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
-    
+    console.log(profileFields)
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {
         // Update https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndUpdate/#findoneandupdate-example-replace-with-upsert

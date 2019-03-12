@@ -15,6 +15,13 @@ export const registerUser = (userData, history) => dispatch => {
       });
     });
 };
+// set logged in user
+export const setCurrentUser = decoded => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: decoded
+  };
+};
 
 // Login - get uer token
 // this is going to set the token into localstorage, then user the token in localstorage to call into private routes
@@ -37,13 +44,6 @@ export const loginUser = userData => dispatch => {
         payload: err.response.data
       });
     });
-};
-// set logged in user
-export const setCurrentUser = decoded => {
-  return {
-    type: SET_CURRENT_USER,
-    payload: decoded
-  };
 };
 
 // log user out
