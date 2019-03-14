@@ -16,18 +16,22 @@ class ProfileGithub extends Component {
   }
 
   componentDidMount() {
-    const { username } = this.props;
+    const { githubUserName } = this.props;
     const { count, sort, clientId, clientSecret } = this.state;
     fetch(
-      `https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`
+      `https://api.github.com/users/${githubUserName}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`
     )
       .then(res => res.json())
       .then(data => {
-        if (this.refs.myRef) {
+        if (data.message === "Not Found") {
+          console.log('no repos found for user')
+        } else {
           this.setState({ repos: data });
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log('found error ')
+      });
   }
 
   render() {
@@ -75,7 +79,7 @@ class ProfileGithub extends Component {
 }
 
 ProfileGithub.propTypes = {
-  username: PropTypes.string.isRequired
+  githubUserName: PropTypes.string.isRequired
 };
 
 export default ProfileGithub;

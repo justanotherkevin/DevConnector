@@ -47,7 +47,7 @@ class Profile extends Component {
               experience={profile.experience}
             />
             {profile.githubusername &&
-              <ProfileGithub username={profile.githubusername} />
+              <ProfileGithub githubUserName={profile.githubusername} />
             }
           </div>
         );
